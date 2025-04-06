@@ -9,7 +9,7 @@ type StockMap = {
   [key in StockSymbol]: number;
 };
 
-export default function InvestmentApp() {
+export default function YatirimWebUygulamasi () {
   const [userName, setUserName] = useState<string | null>(null);
   const [balance, setBalance] = useState(1000);
   const [stocks, setStocks] = useState<StockMap>({ STK1: 0, STK2: 0, STK3: 0, STK4: 0 });

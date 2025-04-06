@@ -1,5 +1,5 @@
 import Head from "next/head";
-import InvestmentApp from "../YatirimWebUygulamasi";
+import YatirimWebUygulamasi from "../YatirimWebUygulamasi";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <Head>
         <title>Yatırım Simülasyonu</title>
       </Head>
-      <InvestmentApp />
+      <YatirimWebUygulamasi />
     </>
   );
 }
