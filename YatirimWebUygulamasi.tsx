@@ -202,4 +202,33 @@ export default function InvestmentApp() {
       )}
     </div>
   );
+
+
+{currentTab === 'chatbot' && (
+  <div id="chatbot" className="mt-10">
+    <div className="flex items-center gap-2 mb-2">
+      <img src={roboAvatar} alt="roboadvisor" className="w-6 h-6 rounded-full" />
+      <span className="font-bold">RoboAdvisor</span>
+    </div>
+    <div className="bg-white shadow rounded p-4 h-64 overflow-auto space-y-2 text-sm md:text-base">
+      {chatHistory.map((msg, i) => (
+        <div key={i} className={`max-w-[70%] p-2 rounded-lg mb-1 ${msg.sender === 'user' ? 'bg-blue-100 ml-auto text-right' : 'bg-gray-100 mr-auto text-left'}`}>
+          {msg.text}
+        </div>
+      ))}
+    </div>
+    <div className="flex flex-col md:flex-row mt-2 space-y-2 md:space-y-0 md:space-x-2">
+      <input
+        className="border rounded p-2 w-full"
+        value={inputMessage}
+        onChange={(e) => setInputMessage(e.target.value)}
+        placeholder={userName ? "Hisse senedi sor, öneri iste, selamlaş..." : "Önce adını yazar mısın?"}
+      />
+      <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleChat}>Gönder</button>
+    </div>
+  </div>
+)}
+
+// ... (geri kalan kodlar aynı kalıyor)
+
 }
