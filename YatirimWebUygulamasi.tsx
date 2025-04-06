@@ -206,27 +206,36 @@ export default function InvestmentApp() {
   {currentTab === 'chatbot' && (
     <div id="chatbot" className="mt-10">
       <div className="flex justify-center mb-4">
-        <img
-          src={roboAvatar}
-          alt="RoboAdvisor"
-          className="w-8 h-8 rounded-full object-contain"
-          style={{ maxWidth: '32px', maxHeight: '32px' }}
-        />
+        <img src={roboAvatar} alt="RoboAdvisor" className="w-6 h-6 rounded-full object-contain" />
       </div>
-      <div className="bg-white shadow rounded p-4 h-64 overflow-auto space-y-2 text-sm md:text-base">
+      <div className="bg-white shadow rounded p-4 h-64 overflow-auto space-y-3 text-sm md:text-base">
         {chatHistory.map((msg, i) => (
           <div
             key={i}
-            className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} items-end`}
           >
+            {msg.sender === 'bot' && (
+              <img
+                src={roboAvatar}
+                alt="robo"
+                className="w-6 h-6 rounded-full mr-2"
+              />
+            )}
             <div
-              className={`max-w-[70%] p-2 rounded-lg mb-1 ${
+              className={`relative max-w-[70%] px-4 py-2 rounded-xl text-sm leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-blue-100 text-right'
-                  : 'bg-gray-100 text-left'
+                  ? 'bg-blue-500 text-white rounded-br-none'
+                  : 'bg-gray-200 text-gray-900 rounded-bl-none'
               }`}
             >
               {msg.text}
+              <div
+                className={`absolute w-3 h-3 rotate-45 ${
+                  msg.sender === 'user'
+                    ? 'bg-blue-500 right-0 bottom-0 translate-x-1/2 translate-y-1/2'
+                    : 'bg-gray-200 left-0 bottom-0 -translate-x-1/2 translate-y-1/2'
+                }`}
+              ></div>
             </div>
           </div>
         ))}
@@ -236,18 +245,9 @@ export default function InvestmentApp() {
           className="border rounded p-2 w-full"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
-          placeholder={
-            userName
-              ? 'Hisse senedi sor, öneri iste, selamlaş...'
-              : 'Önce adını yazar mısın?'
-          }
+          placeholder={userName ? "Hisse senedi sor, öneri iste, selamlaş..." : "Önce adını yazar mısın?"}
         />
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={handleChat}
-        >
-          Gönder
-        </button>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={handleChat}>Gönder</button>
       </div>
     </div>
   )}
