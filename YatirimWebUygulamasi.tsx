@@ -207,7 +207,7 @@ export default function InvestmentApp() {
 {currentTab === 'chatbot' && (
   <div id="chatbot" className="mt-10">
     <div className="flex items-center gap-2 mb-2">
-      <img src={roboAvatar} alt="roboadvisor" className="w-6 h-6 rounded-full" />
+      <img src={roboAvatar} alt="roboadvisor" className="w-10 h-10 rounded-full object-contain" />
       <span className="font-bold">RoboAdvisor</span>
     </div>
     <div className="bg-white shadow rounded p-4 h-64 overflow-auto space-y-2 text-sm md:text-base">
